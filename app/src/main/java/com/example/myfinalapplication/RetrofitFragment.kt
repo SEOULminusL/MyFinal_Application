@@ -1,12 +1,16 @@
 package com.example.myfinalapplication
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.myfinalapplication.databinding.FragmentRetrofitBinding
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -36,6 +40,25 @@ class RetrofitFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         val binding = FragmentRetrofitBinding.inflate(inflater, container, false)
+        val returnType = arguments?.getString("returnType")
+        val call: Call<PageListModel> = MyApp.networkService.getList(
+            1,
+            10,
+            returnType!!,
+            "P4PmujW8wfBB3rzyBoZVaj49IvWWqzZPAYJeDODQ8sbKdSNv5Jf1KSnSPy+aLC8EmFx1nq06COKV2x/X0JoEkw=="
+        )
+
+        call?.enqueue(object : Callback<PageListModel>{
+            override fun onResponse(call: Call<PageListModel>, response: Response<PageListModel>) {
+                if(response.isSuccessful){
+                    Log.d("mobileApp", "$response")
+                }
+            }
+
+            override fun onFailure(call: Call<PageListModel>, t: Throwable) {
+                Log.d("mobileApp", "onFailure")
+            }
+        })
 
         // Inflate the layout for this fragment
         //return inflater.inflate(R.layout.fragment_retrofit, container, false)
