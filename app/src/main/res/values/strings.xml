@@ -3,4 +3,6 @@
     <string name="in_">
         \u00EB\u00B0\u0098\u00EB\u00A0\u00A4\u00EB\u008F\u0099\u00EB\u00AC\u00BC\n\u00EA\u00B5\u00AC\u00EC\u00A1\u00B0\u00EC\u00A0\u0095\u00EB\u00B3\u00B4\n(in\u00EB\u00B6\u0080\u00EC\u0082\u00B0)
     </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //setContentView(R.layout.activity_main)
-
+        //setContentView 문제 발생
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -26,6 +26,20 @@ class MainActivity : AppCompatActivity() {
             else if(binding.btnLogin.text.equals("로그아웃"))
                 intent.putExtra("data","login" )
             startActivity(intent)
+        }
+
+        val fragment = RetrofitFragment()
+        val bundle = Bundle()
+        binding.searchBtn.setOnClickListener {
+            when(binding.rGroup.checkedRadioButtonId){
+                R.id.json -> bundle.putString("returnType", "json")
+                R.id.xml -> bundle.putString("returnType", "xml")
+                else -> bundle.putString("returnType", "json")
+            }
+            fragment.arguments = bundle
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.activity_content, fragment)
+                .commit()
         }
     }
 
