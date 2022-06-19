@@ -21,9 +21,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnLogin.setOnClickListener {
             val intent = Intent(this, AuthActivity::class.java)
-            if(binding.btnLogin.text.equals("로그인"))
+            if(binding.btnLogin.text.equals("Log in"))
                 intent.putExtra("data","logout")
-            else if(binding.btnLogin.text.equals("로그아웃"))
+            else if(binding.btnLogin.text.equals("Log out"))
                 intent.putExtra("data","login" )
             startActivity(intent)
         }
@@ -60,13 +60,13 @@ class MainActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         if(MyApplication.checkAuth() || MyApplication.email != null){
-            binding.btnLogin.text = "로그아웃"
+            binding.btnLogin.text = "Log out"
             binding.authTv.text = "${MyApplication.email}님 반갑습니다"
             binding.authTv.textSize = 16F
         }
         else{
-            binding.btnLogin.text = "로그인"
-            binding.authTv.text = "덕성 모바일"
+            binding.btnLogin.text = "Log in"
+            binding.authTv.text = "20181450 이서우"
             binding.authTv.textSize = 24F
         }
     }

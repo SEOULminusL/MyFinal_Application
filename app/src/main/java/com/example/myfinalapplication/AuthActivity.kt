@@ -183,7 +183,7 @@ class AuthActivity : AppCompatActivity() {
             }
         } else if (mode.equals("logout")) {
             binding.run {
-                authMainTextView.text = "로그인 하거나 회원가입 해주세요"
+                authMainTextView.text = "*Log in"
                 authMainTextView.visibility = View.VISIBLE
                 logoutBtn.visibility = View.GONE
                 goSignInBtn.visibility = View.VISIBLE
