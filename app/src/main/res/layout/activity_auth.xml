@@ -12,14 +12,14 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="로그아웃"
+        android:text="Log out"
         android:id="@+id/authMainTextView"
         android:visibility="gone"
         android:layout_marginTop="20dp" />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="로그아웃"
+        android:text="LOG OUT"
         android:id="@+id/logoutBtn"
         android:textStyle="bold"
         android:visibility="gone"
@@ -27,7 +27,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="회원가입"
+        android:text="REGISTER"
         android:id="@+id/goSignInBtn"
         android:textStyle="bold"
         android:visibility="gone"
@@ -54,7 +54,7 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="가입"
+        android:text="join"
         android:id="@+id/signBtn"
         android:textStyle="bold"
         android:visibility="gone"
@@ -75,12 +75,6 @@
         android:id="@+id/btn_kakao_login"
         android:src="@drawable/kakao_login_medium_wide"
         android:visibility="gone" />
-
-
-
-
-
-
 
 
 

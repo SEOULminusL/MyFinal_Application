@@ -11,13 +11,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/purple_500"
+        android:background="@color/black"
         android:orientation="horizontal">
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="덕성 모바일"
+            android:text="20181450 이서우"
             android:textSize="24dp"
             android:textColor="@color/white"
             android:padding="10dp"
@@ -28,12 +28,52 @@
             android:id="@+id/btnLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="로그인"
+            android:text="Log in"
+
             android:textSize="24dp">
 
         </Button>
 
     </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/union"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="61dp"
+            android:layout_marginTop="76dp"
+            android:background="@drawable/union1" />
+
+        <TextView
+            android:id="@+id/in_"
+            android:layout_width="205dp"
+            android:layout_height="193dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="101dp"
+            android:layout_marginTop="113dp"
+            android:background="@drawable/text"
+            android:gravity="center_horizontal|center_vertical" />
+
+        <View
+            android:id="@+id/union2"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginLeft="289dp"
+            android:layout_marginTop="289dp"
+            android:background="@drawable/union2" />
+
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -48,17 +88,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="JSON"
-                android:id="@+id/json" />
+                android:visibility="gone"
+                android:id="@+id/json"
+                />
             <RadioButton
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="XML"
+                android:text="부산 - XML"
                 android:id="@+id/xml" />
         </RadioGroup>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="검색"
+            android:text="Search"
             android:id="@+id/searchBtn" />
     </LinearLayout>
     <FrameLayout

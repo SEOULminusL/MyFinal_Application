@@ -8,7 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.myfinalapplication.databinding.FragmentRetrofitBinding
+import com.example.myfinalapplication.databinding.FragmentXmlBinding
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -20,10 +20,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [RetrofitFragment.newInstance] factory method to
+ * Use the [XmlFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class RetrofitFragment : Fragment() {
+class XmlFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -40,31 +40,29 @@ class RetrofitFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val binding = FragmentRetrofitBinding.inflate(inflater, container, false)
+        val binding = FragmentXmlBinding.inflate(inflater, container, false)
+        // Inflate the layout for this fragment
+
         val returnType = arguments?.getString("returnType")
-        val call: Call<PageListModel> = MyApp.networkService.getList(
+        val call: Call<responseInfo> = MyApp.networkServiceXml.getXmlList(
+            "P4PmujW8wfBB3rzyBoZVaj49IvWWqzZPAYJeDODQ8sbKdSNv5Jf1KSnSPy+aLC8EmFx1nq06COKV2x/X0JoEkw==",
             1,
-            10,
-            returnType!!,
-            "P4PmujW8wfBB3rzyBoZVaj49IvWWqzZPAYJeDODQ8sbKdSNv5Jf1KSnSPy+aLC8EmFx1nq06COKV2x/X0JoEkw=="
+            10
         )
 
-        call?.enqueue(object : Callback<PageListModel>{
-            override fun onResponse(call: Call<PageListModel>, response: Response<PageListModel>) {
+        call?.enqueue(object : Callback<responseInfo> {
+            override fun onResponse(call: Call<responseInfo>, response: Response<responseInfo>) {
                 if(response.isSuccessful){
                     Log.d("mobileApp", "$response")
-                    binding.retrofitRecyclerView.layoutManager = LinearLayoutManager(activity)
-                    binding.retrofitRecyclerView.adapter = MyAdapter(activity as Context, response.body()?.data)
+                    binding.xmlRecyclerView.layoutManager = LinearLayoutManager(activity)
+                    binding.xmlRecyclerView.adapter = XmlAdapter(activity as Context, response.body()!!.body!!.items!!.item)
                 }
             }
 
-            override fun onFailure(call: Call<PageListModel>, t: Throwable) {
+            override fun onFailure(call: Call<responseInfo>, t: Throwable) {
                 Log.d("mobileApp", "onFailure")
             }
         })
-
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_retrofit, container, false)
 
         return binding.root
     }
@@ -76,12 +74,12 @@ class RetrofitFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment RetrofitFragment.
+         * @return A new instance of fragment XmlFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            RetrofitFragment().apply {
+            XmlFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

@@ -29,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         val fragment = RetrofitFragment()
+        val xmlfragment = XmlFragment()
         val bundle = Bundle()
         binding.searchBtn.setOnClickListener {
             when(binding.rGroup.checkedRadioButtonId){
@@ -36,10 +37,23 @@ class MainActivity : AppCompatActivity() {
                 R.id.xml -> bundle.putString("returnType", "xml")
                 else -> bundle.putString("returnType", "json")
             }
-            fragment.arguments = bundle
-            supportFragmentManager.beginTransaction()
-                .replace(R.id.activity_content, fragment)
-                .commit()
+
+            if (binding.rGroup.checkedRadioButtonId == R.id.json) {
+
+
+                fragment.arguments = bundle
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.activity_content, fragment)
+                    .commit()
+            }
+            else if (binding.rGroup.checkedRadioButtonId == R.id.xml){
+                xmlfragment.arguments = bundle
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.activity_content, xmlfragment)
+                    .commit()
+            }
+
+
         }
     }
 

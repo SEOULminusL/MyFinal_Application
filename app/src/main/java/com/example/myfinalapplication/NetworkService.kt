@@ -12,4 +12,11 @@ interface NetworkService {
         @Query("returnType") returnType: String,
         @Query("serviceKey") apiKey:String
     ) : Call<PageListModel>
+
+    @GET("6260000/BusanPetAnimalInfoService/getPetAnimalInfo")
+    fun getXmlList(
+        @Query("ServiceKey") apiKey: String,
+        @Query("pageNo") page: Int,
+        @Query("numOfRows") pageSize:Int
+    ): Call<responseInfo>
 }
